@@ -12,7 +12,7 @@ from .ext import InvenioRecordsGlobalSearch
 from .proxies import current_records_global_search
 from .records import GlobalSearchRecord
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 
 __all__ = (
     "__version__",

@@ -19,3 +19,4 @@ recursive-include docs *.rst
 recursive-include docs *.txt
 recursive-include docs Makefile
 recursive-include tests *.py
+recursive-include invenio_records_global_search *.po *.pot *.mo

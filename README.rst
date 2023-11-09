@@ -5,9 +5,9 @@
     and/or modify it under the terms of the MIT License; see LICENSE file for
     more details.
 
-==============
+==============================
  invenio-records-global-search
-==============
+==============================
 
 .. image:: https://github.com/tu-graz-library/invenio-records-global-search/workflows/CI/badge.svg
         :target: https://github.com/tu-graz-library/invenio-records-global-search/actions?query=workflow%3ACI

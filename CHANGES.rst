@@ -8,6 +8,12 @@
 Changes
 =======
 
+Version v0.2.1 (release 2023-11-23)
+
+- translations: update
+- facets: implement better wording for datamodel
+
+
 Version v0.2.0 (release 2023-11-09)
 
 

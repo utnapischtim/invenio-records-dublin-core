@@ -8,6 +8,11 @@
 Changes
 =======
 
+Version v0.2.2 (release 2024-01-07)
+
+- fix: add missing permission
+
+
 Version v0.2.1 (release 2023-11-23)
 
 - translations: update

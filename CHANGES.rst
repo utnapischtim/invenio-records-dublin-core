@@ -8,6 +8,13 @@
 Changes
 =======
 
+Version v0.2.3 (release 2024-02-14)
+
+- search: change to rdm multi style
+- fix: update should be allowed
+- ruff: fix noqa v0.1.14
+
+
 Version v0.2.2 (release 2024-01-07)
 
 - fix: add missing permission

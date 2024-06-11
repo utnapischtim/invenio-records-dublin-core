@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2023 Graz University of Technology.
+# Copyright (C) 2023-2024 Graz University of Technology.
 #
 # invenio-records-global-search is free software; you can redistribute it and/or
 # modify it under the terms of the MIT License; see LICENSE file for more
@@ -21,7 +21,7 @@ class GlobalSearchMetadataSchema(Schema):
     creators = List(String(required=True))
     identifiers = List(String(required=True))
     relations = List(String())
-    rights = List(String(required=True))
+    rights = List(String())
     dates = List(String())
     subjects = List(String())
     descriptions = List(String())

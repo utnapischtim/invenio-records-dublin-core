@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2023 Graz University of Technology.
+# Copyright (C) 2023-2024 Graz University of Technology.
 #
 # invenio-records-global-search is free software; you can redistribute it and/or
 # modify it under the terms of the MIT License; see LICENSE file for more
@@ -12,19 +12,6 @@ from functools import partial
 
 from flask import Blueprint, Flask, current_app, render_template
 from invenio_search_ui.searchconfig import search_app_config
-
-blueprint = Blueprint("invenio_records_global_search_ext", __name__)
-
-
-@blueprint.record_once
-def init(state) -> None:  # noqa: ANN001
-    """Init app."""
-    app = state.app
-    # Register services - cannot be done in extension because
-    # Invenio-Records-Resources might not have been initialized.
-    registry = app.extensions["invenio-records-resources"].registry
-    ext = app.extensions["invenio-records-global-search"]
-    registry.register(ext.records_service, service_id="global-search-record")
 
 
 def create_blueprint(_: Flask) -> Blueprint:

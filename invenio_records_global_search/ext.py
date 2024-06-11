@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2023 Graz University of Technology.
+# Copyright (C) 2023-2024 Graz University of Technology.
 #
 # invenio-records-global-search is free software; you can redistribute it and/or
 # modify it under the terms of the MIT License; see LICENSE file for more
@@ -47,3 +47,17 @@ class InvenioRecordsGlobalSearch:
             service=self.records_service,
             config=GlobalSearchRecordResourceConfig,
         )
+
+
+def finalize_app(app: Flask) -> None:
+    """Finalize app."""
+    init(app)
+
+
+def init(app: Flask) -> None:
+    """Init app."""
+    # Register services - cannot be done in extension because
+    # Invenio-Records-Resources might not have been initialized.
+    ext = app.extensions["invenio-records-global-search"]
+    registry = app.extensions["invenio-records-resources"].registry
+    registry.register(ext.records_service, service_id="global-search-record")

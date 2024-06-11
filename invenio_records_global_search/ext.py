@@ -59,5 +59,8 @@ def init(app: Flask) -> None:
     # Register services - cannot be done in extension because
     # Invenio-Records-Resources might not have been initialized.
     ext = app.extensions["invenio-records-global-search"]
-    registry = app.extensions["invenio-records-resources"].registry
-    registry.register(ext.records_service, service_id="global-search-record")
+    sregistry = app.extensions["invenio-records-resources"].registry
+    sregistry.register(ext.records_service, service_id="global-search-record")
+
+    iregistry = app.extensions["invenio-indexer"].registry
+    iregistry.register(ext.records_service.indexer, indexer_id="global-search-record")

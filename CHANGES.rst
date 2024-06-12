@@ -8,6 +8,15 @@
 Changes
 =======
 
+Version v0.3.0 (release 2024-06-12)
+
+- global: rely on finalize_app
+- schema: allow empty rights.
+  the license setting is not mondatory on the different datamodels
+  therefore it can't be required on the global search
+
+
+
 Version v0.2.3 (release 2024-02-14)
 
 - search: change to rdm multi style

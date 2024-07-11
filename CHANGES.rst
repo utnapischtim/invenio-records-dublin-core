@@ -8,6 +8,12 @@
 Changes
 =======
 
+Version v0.3.1 (release 2024-07-11)
+
+- fix: indexer_cls shared with rdm-records
+
+
+
 Version v0.3.0 (release 2024-06-12)
 
 - global: rely on finalize_app

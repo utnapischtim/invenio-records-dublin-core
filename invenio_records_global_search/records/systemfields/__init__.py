@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2023 Graz University of Technology.
+# Copyright (C) 2023-2024 Graz University of Technology.
 #
 # invenio-records-global-search is free software; you can redistribute it and/or
 # modify it under the terms of the MIT License; see LICENSE file for more
@@ -11,6 +11,12 @@
 
 from .context import GlobalSearchPIDFieldContext
 from .original import OriginalField
+from .parent import ParentField
 from .providers import GlobalSearchRecordProvider
 
-__all__ = ("GlobalSearchRecordProvider", "GlobalSearchPIDFieldContext", "OriginalField")
+__all__ = (
+    "GlobalSearchRecordProvider",
+    "GlobalSearchPIDFieldContext",
+    "OriginalField",
+    "ParentField",
+)

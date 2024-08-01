@@ -11,8 +11,18 @@
 from flask import Flask
 
 from . import config
-from .resources import GlobalSearchRecordResource, GlobalSearchRecordResourceConfig
-from .services import GlobalSearchRecordService, GlobalSearchRecordServiceConfig
+from .resources import (
+    GlobalSearchCommunityRecordResource,
+    GlobalSearchCommunityRecordResourceConfig,
+    GlobalSearchRecordResource,
+    GlobalSearchRecordResourceConfig,
+)
+from .services import (
+    GlobalSearchCommunityRecordService,
+    GlobalSearchCommunityRecordServiceConfig,
+    GlobalSearchRecordService,
+    GlobalSearchRecordServiceConfig,
+)
 
 
 class InvenioRecordsGlobalSearch:
@@ -40,12 +50,21 @@ class InvenioRecordsGlobalSearch:
         """Initialize services."""
         service_config = GlobalSearchRecordServiceConfig.build(app)
         self.records_service = GlobalSearchRecordService(config=service_config)
+        service_config = GlobalSearchCommunityRecordServiceConfig.build(app)
+        self.community_records_service = GlobalSearchCommunityRecordService(
+            config=service_config
+        )
 
     def init_resources(self) -> None:
         """Initialize resources."""
         self.records_resource = GlobalSearchRecordResource(
             service=self.records_service,
             config=GlobalSearchRecordResourceConfig,
+        )
+
+        self.community_records_resource = GlobalSearchCommunityRecordResource(
+            service=self.community_records_service,
+            config=GlobalSearchCommunityRecordResourceConfig,
         )
 
 

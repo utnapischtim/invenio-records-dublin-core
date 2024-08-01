@@ -18,6 +18,7 @@ from .systemfields import (
     GlobalSearchPIDFieldContext,
     GlobalSearchRecordProvider,
     OriginalField,
+    ParentField,
 )
 
 
@@ -46,6 +47,8 @@ class GlobalSearchRecord(Record):
     )
 
     original = OriginalField()
+
+    parent = ParentField()
 
     gs_pid = None
 

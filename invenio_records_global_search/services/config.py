@@ -10,6 +10,7 @@
 
 from typing import ClassVar
 
+from invenio_communities.communities.records.api import Community
 from invenio_indexer.api import RecordIndexer
 from invenio_records_resources.services import (
     RecordServiceConfig,
@@ -27,6 +28,8 @@ from ..records import GlobalSearchRecord
 from .components import DefaultRecordsComponents
 from .facets import data_model, formats, publishers, rights, subjects, types
 from .permissions import GlobalSearchRecordPermissionPolicy
+
+# CommunityRecordsSchema,
 from .schemas import GlobalSearchRecordSchema
 
 
@@ -74,4 +77,39 @@ class GlobalSearchRecordServiceConfig(RecordServiceConfig, ConfiguratorMixin):
     components = FromConfig(
         "GLOBAL_SEARCH_RECORDS_SERVICE_COMPONENTS",
         default=DefaultRecordsComponents,
+    )
+
+
+class GlobalSearchCommunityRecordServiceConfig(RecordServiceConfig, ConfiguratorMixin):
+    """GlobalSearchCommunityRecordServiceConfig."""
+
+    service_id = "community-records"
+    record_cls = GlobalSearchRecord
+    community_cls = Community
+
+    # Service schemas
+    # community_record_schema = CommunityRecordsSchema
+    schema = FromConfig(
+        "GLOBAL_SEARCH_SCHEMA",
+        default=GlobalSearchRecordSchema,
+    )
+
+    permission_policy_cls = FromConfig(
+        "GLOBAL_SEARCH_PERMISSION_POLICY",
+        default=GlobalSearchRecordPermissionPolicy,
+    )
+
+    # Search
+    search = FromConfigSearchOptions(
+        "GLOBAL_SEARCH_COMMUNITIES_SEARCH",
+        "GLOBAL_SEARCH_SORT_OPTIONS",
+        "GLOBAL_SEARCH_FACETS",
+        search_option_cls=GlobalSearchSearchOptions,
+    )
+
+    # Max n. records that can be removed at once
+    max_number_of_removals = 10
+
+    links_search_community_records = pagination_links(
+        "{+api}/communities/{id}/records{?args*}"
     )

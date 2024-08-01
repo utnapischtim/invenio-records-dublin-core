@@ -20,5 +20,6 @@ class GlobalSearchRecordPermissionPolicy(RecordPermissionPolicy):
 
     can_search: ClassVar = [AnyUser(), SystemProcess()]
     can_read: ClassVar = [AnyUser(), RecordOwners()]
+    can_read_files: ClassVar = [AnyUser(), RecordOwners()]
 
     can_update: ClassVar = [AnyUser(), SystemProcess()]

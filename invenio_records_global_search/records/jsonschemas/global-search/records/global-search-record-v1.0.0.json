@@ -24,6 +24,7 @@
     "resource_type": {},
     "tombstone": {},
     "original": {},
+    "parent": {},
     "gs_pid": {}
   }
 }

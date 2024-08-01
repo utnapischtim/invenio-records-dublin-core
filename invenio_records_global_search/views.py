@@ -28,6 +28,7 @@ def create_blueprint(_: Flask) -> Blueprint:
     )
     blueprint.add_url_rule(routes["record-search"], view_func=search)
     blueprint.app_context_processor(search_app_context)
+    blueprint.app_context_processor(search_app_context_community)
 
     return blueprint
 
@@ -47,6 +48,21 @@ def search_app_context() -> dict:
     }
 
 
+def search_app_context_community():
+    """Search app context processor."""
+    return {
+        "search_app_communities_global_search_records_config": partial(
+            search_app_config,
+            config_name="GLOBAL_SEARCH_COMMUNITIES_SEARCH",
+            available_facets=current_app.config["GLOBAL_SEARCH_FACETS"],
+            sort_options=current_app.config["GLOBAL_SEARCH_SORT_OPTIONS"],
+            headers={"Accept": "application/vnd.invenioglobalsearch.v1+json"},
+            pagination_options=(10, 20),
+            app_id="GlobalSearchCommunity.Search",
+        ),
+    }
+
+
 def search() -> str:
     """Search help guide."""
     return render_template("invenio_records_global_search/search/search.html")
@@ -57,3 +73,10 @@ def create_record_bp(app: Flask) -> Blueprint:
     return app.extensions[
         "invenio-records-global-search"
     ].records_resource.as_blueprint()
+
+
+def create_community_record_bp(app: Flask) -> Blueprint:
+    """Create community records blueprint."""
+    return app.extensions[
+        "invenio-records-global-search"
+    ].community_records_resource.as_blueprint()

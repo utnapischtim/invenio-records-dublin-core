@@ -39,7 +39,7 @@ export const GlobalSearchRecordResultsListItem = ({ result, index }) => {
     creators = contributors;
   }
 
-  const viewLink = get(result, "original.view");
+  const viewLink = "/" + get(result, "original.view");
 
   const schema = get(result, "original.schema_l10n");
 

@@ -41,6 +41,20 @@
         "properties": {
           "schema": { "type": "keyword" }
         }
+      },
+      "parent": {
+        "properties": {
+          "communities": {
+            "properties": {
+              "ids": {
+                "type": "keyword"
+              },
+              "default": {
+                "type": "keyword"
+              }
+            }
+          }
+        }
       }
     }
   }

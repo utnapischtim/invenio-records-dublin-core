@@ -27,7 +27,7 @@ export const GlobalSearchRecordResultsListItem = ({ result, index }) => {
   const accessStatus = get(result, "access_status.title_l10n");
 
   const resourceType = get(result, "metadata.types", ["Not defined"])[0];
-  const description = get(result, "metadata.descriptions", []).join(" ");
+  const description = get(result, "descriptions_stripped", []).join(" ");
   const subjects = get(result, "metadata.subjects", []);
 
   let creators = get(result, "metadata.creators", ["No creators"]);

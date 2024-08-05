@@ -10,7 +10,7 @@
 
 from flask import current_app
 from marshmallow import Schema, fields
-from marshmallow_utils.fields import SanitizedUnicode
+from marshmallow_utils.fields import SanitizedUnicode, StrippedHTML
 
 
 def access_status(_: dict) -> dict:
@@ -55,6 +55,8 @@ class GlobalSearchSchema(Schema):
     original = fields.Nested(OriginalSchema, attribute="original")
 
     created_date_l10n_long = fields.Function(created_date_l10n_long)
+
+    description_stripped = StrippedHTML(attribute="metadata.description")
 
     class Meta:
         """Meta class to accept unknwon fields."""

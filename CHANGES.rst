@@ -8,6 +8,11 @@
 Changes
 =======
 
+Version v0.3.2 (release 2024-11-14)
+
+- fix: strip html tags
+
+
 Version v0.3.1 (release 2024-07-11)
 
 - fix: indexer_cls shared with rdm-records
